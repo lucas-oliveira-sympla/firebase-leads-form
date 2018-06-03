@@ -1,16 +1,16 @@
-#FIREBASE SAVE LEADS FORM
+# FIREBASE SAVE LEADS FORM
 
 Save leads in your FIREBASE database whit simple form and Javascript 
 
-##Getting Started
+## Getting Started
 
 clone this repository
 
-##Prerequisites
+## Prerequisites
 
 simple web server : you can use { Express , apache, nginx , Google 200ok }
 
-##Built With
+## Built With
 -Javascript ES6
 -FIREBASE
 -HTML
@@ -18,13 +18,13 @@ simple web server : you can use { Express , apache, nginx , Google 200ok }
 -CSS
 
 
-##Authors
+## Authors
 Rogerio Orioli @rogeriorioli
 
-##License
+## License
 This project is licensed under the MIT License 
 
-##Acknowledgments
+## Acknowledgments
 https://firebase.google.com/docs/
 
 
