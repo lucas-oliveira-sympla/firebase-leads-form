@@ -1,0 +1,14 @@
+label {
+    margin: 10px 0;
+}
+.btn {
+    margin-top: 20px;
+    float: right;
+}
+.alert {
+    display: none;
+}
+
+.display {
+    display: block;
+}
