@@ -11,11 +11,11 @@ clone this repository
 simple web server : you can use { Express , apache, nginx , Google 200ok }
 
 ## Built With
--Javascript ES6
--FIREBASE
--HTML
--BOOTSTRAP
--CSS
+- Javascript ES6
+- FIREBASE
+- HTML
+- BOOTSTRAP
+- CSS
 
 
 ## Authors
