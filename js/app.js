@@ -1,22 +1,28 @@
 // Initialize Firebase
 const config = {
-   
+    apiKey: "AIzaSyDhJDppM9yN4I1lwTiFWQhUY0Y5cFIiZZ0",
+    authDomain: "blog-b9868.firebaseapp.com",
+    databaseURL: "https://blog-b9868.firebaseio.com",
+    projectId: "blog-b9868",
+    storageBucket: "blog-b9868.appspot.com",
+    messagingSenderId: "523133583921"
   };
   firebase.initializeApp(config);
   
   const //send leads
         name = document.querySelector('#name'),
-        email = document.querySelector('#email')
-        phone = document.querySelector('#phone')
-        alert = document.querySelector('.alert')
+        email = document.querySelector('#email'),
+        phone = document.querySelector('#phone'),
+        alert = document.querySelector('.alert'),
         button = document.querySelector('.send-form')
 
-const // login 
-     overlay = document.querySelector('.overlay'),  
-     userEmail = document.querySelector('#email-user'),
-     password = document.querySelector('#password'),
-     alertLogin = document.querySelector('.alert-login')
-     btnLogin = document.querySelector('.btn-login')
+ const // login 
+        overlay = document.querySelector('.overlay'),  
+        userEmail = document.querySelector('#email-user'),
+        password = document.querySelector('#password'),
+        alertLogin = document.querySelector('.alert-login'),
+        btnLogin = document.querySelector('.btn-login'),
+        logout = document.querySelector('.logout')
 
 
   // start db reference  connection
@@ -71,9 +77,12 @@ button.addEventListener('click', () => {
 firebase.auth().onAuthStateChanged(user => {
     if (user) { // user logged
         overlay.style.display = 'none';
+        logout.style.display = 'block';
+        
         
     } else { // user not logged
-        alertLogin.classList.add('alert-danger')
+        overlay.style.display = 'block';
+        alertLogin.classList.add('alert', 'alert-danger')
         alertLogin.innerHTML = 'You need be a logged'
 
     }
@@ -84,7 +93,7 @@ const loginFunction = (Email, Pass) => {
     Email = userEmail.value
     Pass = password.value
     //console.log(Email, Pass)
-    firebase.auth().createUserWithEmailAndPassword(Email, Pass).catch(function(error) {
+    firebase.auth().signInWithEmailAndPassword(Email, Pass).catch(function(error) {
 
         // Handle Errors here.
         const errorCode = error.code;
@@ -96,6 +105,17 @@ const loginFunction = (Email, Pass) => {
     });
 
 }
+
+const logoutFunction = () => {
+    firebase.auth().signOut()
+    .then(function(success) {
+         success =  alertLogin.innerHTML = 'You need be make another login'
+    })
+    .catch(function(error) {
+        logout.style.display = 'none';
+    });
+}
+
 // login event
 btnLogin.addEventListener('click', () => {
     loginFunction();
