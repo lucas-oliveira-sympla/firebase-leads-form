@@ -8,7 +8,27 @@ label {
 .alert {
     display: none;
 }
+.alert-login {
+    display: block;
+}
 
 .display {
     display: block;
+}
+.overlay{
+    background: rgba(0,0,0,.8);
+    height: 100%;
+    position: fixed;
+    width: 100%;
+    z-index: 9999999;
+    top: 0;
+}
+
+.modal-login {
+    max-width: 750px;
+    background: #ffff;
+    padding: 20px;
+    margin: 25vh auto;
+    display: flow-root;
+    border-radius: 20px;
 }
