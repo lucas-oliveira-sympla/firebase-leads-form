@@ -1,6 +1,11 @@
 // Initialize Firebase
 const config = {
-
+     apiKey: "<YOUR API KEY >",
+     authDomain: "<YOUR AUTH DOMAIN >",
+     databaseURL: "<YOUR DATA URL>",
+     projectId: "<YOUR PROJECT ID >",
+     storageBucket: "<YOUR STORAGE BUCKET >",
+     messagingSenderId: "<YOUR SEND MESSAGE ID >"
   };
   firebase.initializeApp(config);
   
@@ -100,18 +105,19 @@ const loginFunction = (Email, Pass) => {
     });
 
 }
+    //CLEAN FORM LOGIN
+    const cleanLogin = ()  => {
+        userEmail.value = ''
+        password.value = ''
+    }
 
-const logoutFunction = () => {
-    firebase.auth().signOut()
-    .then(function(success) {
-         success =  alertLogin.innerHTML = 'You need be make another login'
+    const logoutFunction = () => {
+        firebase.auth().signOut()
+        cleanLogin();
+
+    }
+
+    // login event
+    btnLogin.addEventListener('click', () => {
+        loginFunction();
     })
-    .catch(function(error) {
-        logout.style.display = 'none';
-    });
-}
-
-// login event
-btnLogin.addEventListener('click', () => {
-    loginFunction();
-})
