@@ -1,20 +1,23 @@
 // Initialize Firebase
-var config = {
-    apiKey: "<YOUR API KEY >",
-    authDomain: "<YOUR AUTH DOMAIN >",
-    databaseURL: "<YOUR DATA URL>",
-    projectId: "<YOUR PROJECT ID >",
-    storageBucket: "<YOUR STORAGE BUCKET >",
-    messagingSenderId: "<YOUR SEND MESSAGE ID >"
+const config = {
+   
   };
   firebase.initializeApp(config);
   
-  const 
+  const //send leads
         name = document.querySelector('#name'),
         email = document.querySelector('#email')
         phone = document.querySelector('#phone')
         alert = document.querySelector('.alert')
         button = document.querySelector('.send-form')
+
+const // login 
+     overlay = document.querySelector('.overlay'),  
+     userEmail = document.querySelector('#email-user'),
+     password = document.querySelector('#password'),
+     alertLogin = document.querySelector('.alert-login')
+     btnLogin = document.querySelector('.btn-login')
+
 
   // start db reference  connection
   const dbRefer = firebase.database().ref('leads')
@@ -64,5 +67,36 @@ button.addEventListener('click', () => {
     validateForm();
 })
 
+//login validade
+firebase.auth().onAuthStateChanged(user => {
+    if (user) { // user logged
+        overlay.style.display = 'none';
+        
+    } else { // user not logged
+        alertLogin.classList.add('alert-danger')
+        alertLogin.innerHTML = 'You need be a logged'
 
+    }
+})
 
+//login function 
+const loginFunction = (Email, Pass) => {
+    Email = userEmail.value
+    Pass = password.value
+    //console.log(Email, Pass)
+    firebase.auth().createUserWithEmailAndPassword(Email, Pass).catch(function(error) {
+
+        // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+    
+        alertLogin.classList.add('alert-danger')
+        alertLogin.innerHTML = errorCode, + errorMessage
+        // ...
+    });
+
+}
+// login event
+btnLogin.addEventListener('click', () => {
+    loginFunction();
+})
